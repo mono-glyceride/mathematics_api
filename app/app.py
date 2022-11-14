@@ -13,7 +13,10 @@ def return_fib_number_by_json():
     fib_number = int(calculate_fib_number(param))
     return jsonify({"result": fib_number})
   else:
-    return jsonify({"result": "error"})
+    return jsonify({
+      "status": 400,
+      "message": v.errors
+      }), 400
 
 def get_params():
   params = {}
