@@ -1,14 +1,35 @@
 from flask import Flask, jsonify, request
 import sympy as sym
+from cerberus import Validator
 
 app = Flask(__name__)
 
 @app.route('/fib', methods=['GET'])
 
 def return_fib_number_by_json():
-  param = int(request.args.get('n'))
-  fib_number = int(calculate_fib_number(param))
-  return jsonify({"result": fib_number})
+  v = Validator(get_schema())
+  if v.validate(get_params()):
+    param = int(request.args.get('n'))
+    fib_number = int(calculate_fib_number(param))
+    return jsonify({"result": fib_number})
+  else:
+    return jsonify({"result": "error"})
+
+def get_params():
+  params = {}
+  params['n'] = request.args.get('n')
+  return params
+
+def get_schema():
+  schema = {
+        'n': {
+            'type': 'integer',
+            'required': True,
+            'coerce': int,
+            'min': 1
+        }
+    }
+  return schema
 
 # 一般項を用いてn番目のフィボナッチ数を返す
 def calculate_fib_number(n):
