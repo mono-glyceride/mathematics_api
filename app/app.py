@@ -9,7 +9,7 @@ app = Flask(__name__)
 def return_fib_number_by_json():
   if 1 < len(dict(request.args)):
     message = {
-      "params": 'too many parameters, only one parameter can be passed'
+      "params": ['too many parameters, only one parameter can be passed']
       }
     return error_status_code_400(message)
 
