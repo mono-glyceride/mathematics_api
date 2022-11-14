@@ -48,3 +48,9 @@ def test_fail_correct_parameter_not_exist_2():
   body = result.get_json()
   assert 400 == body['status']
   assert 400 == result.status_code
+
+def test_fail_incorrect_parameter_exists():
+  result = app.test_client().get('/fib?n=4&p=4')
+  body = result.get_json()
+  assert 400 == body['status']
+  assert 400 == result.status_code
