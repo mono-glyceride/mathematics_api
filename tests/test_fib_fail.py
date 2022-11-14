@@ -78,3 +78,32 @@ def test_pass_2():
   body = result.get_json()
   assert 404 == body['status']
   assert 404 == result.status_code
+
+# 405エラー
+def test_fail_invalid_method_post():
+  result = app.test_client().post('/fib?n=9')
+  body = result.get_json()
+  assert 'The method is not allowed for the requested URL.' == body['message']
+  assert 405 == body['status']
+  assert 405 == result.status_code
+
+def test_fail_invalid_method_put():
+  result = app.test_client().put('/fib?n=9')
+  body = result.get_json()
+  assert 'The method is not allowed for the requested URL.' == body['message']
+  assert 405 == body['status']
+  assert 405 == result.status_code
+
+def test_fail_invalid_method_patch():
+  result = app.test_client().patch('/fib?n=9')
+  body = result.get_json()
+  assert 'The method is not allowed for the requested URL.' == body['message']
+  assert 405 == body['status']
+  assert 405 == result.status_code
+
+def test_fail_invalid_method_delete():
+  result = app.test_client().delete('/fib?n=9')
+  body = result.get_json()
+  assert 'The method is not allowed for the requested URL.' == body['message']
+  assert 405 == body['status']
+  assert 405 == result.status_code
