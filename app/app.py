@@ -52,5 +52,15 @@ def error_status_code_400(message):
     "message": message
     }), 400
 
+@app.errorhandler(404)
+def error_404(error):
+  return set_error(404,'Not found. The requested resource does not exist.')
+
+def set_error(status, message):
+  return jsonify({
+  'status': status,
+  'message': message
+  }), status
+
 if __name__ == "__main__":
   app.run(host="0.0.0.0", port=80, debug=True)
