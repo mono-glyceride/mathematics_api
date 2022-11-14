@@ -7,13 +7,20 @@ app = Flask(__name__)
 @app.route('/fib', methods=['GET'])
 
 def return_fib_number_by_json():
+  if 1 < len(dict(request.args)):
+    message = {
+      "params": ['too many parameters, only one parameter can be passed']
+      }
+    return error_status_code_400(message)
+
   v = Validator(get_schema())
-  if v.validate(get_params()):
-    param = int(request.args.get('n'))
-    fib_number = int(calculate_fib_number(param))
-    return jsonify({"result": fib_number})
-  else:
-    return jsonify({"result": "error"})
+  params = get_params()
+  if not v.validate(params):
+    return error_status_code_400(v.errors)
+
+  n = int(params['n'])
+  fib_number = int(calculate_fib_number(n))
+  return jsonify({"result": fib_number})
 
 def get_params():
   params = {}
@@ -38,6 +45,12 @@ def calculate_fib_number(n):
   # n_th_fibonacci_numberの式のxにnを代入し簡略化
   result = sym.simplify(nth_fib_number.subs(x, n))
   return result
+
+def error_status_code_400(message):
+  return jsonify({
+    "status": 400,
+    "message": message
+    }), 400
 
 if __name__ == "__main__":
   app.run(host="0.0.0.0", port=80, debug=True)
