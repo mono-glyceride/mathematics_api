@@ -7,6 +7,13 @@ app = Flask(__name__)
 @app.route('/fib', methods=['GET'])
 
 def return_fib_number_by_json():
+  if 1 < len(dict(request.args)):
+    return jsonify({
+      "status": 400,
+      "message": {
+        "params": 'Too many parameters, only one parameter can be passed'
+      }
+      }), 400
   v = Validator(get_schema())
   params = get_params()
   if v.validate(params):
