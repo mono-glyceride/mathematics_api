@@ -71,3 +71,10 @@ def test_fail_HTTP_header_injection():
   assert 400 == body['status']
   assert False == hasattr(result.headers, 'Set-Cookie')
   assert 400 == result.status_code
+
+# 404エラー
+def test_pass_2():
+  result = app.test_client().get('/feb?n=9')
+  body = result.get_json()
+  assert 404 == body['status']
+  assert 404 == result.status_code
