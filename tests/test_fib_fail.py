@@ -54,3 +54,11 @@ def test_fail_incorrect_parameter_exists():
   body = result.get_json()
   assert 400 == body['status']
   assert 400 == result.status_code
+
+# 改行コードを含む攻撃的なリクエスト
+def test_fail_HTTP_header_injection():
+  result = app.test_client().get('/fib?n=9%0d%0aSet-Cookie%20SID=ABCD1234')
+  body = result.get_json()
+  assert 400 == body['status']
+  assert False == hasattr(result.headers, 'Set-Cookie')
+  assert 400 == result.status_code
