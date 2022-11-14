@@ -36,3 +36,15 @@ def test_fail_not_integer_4():
   body = result.get_json()
   assert 400 == body['status']
   assert 400 == result.status_code
+
+def test_fail_correct_parameter_not_exist_1():
+  result = app.test_client().get('/fib')
+  body = result.get_json()
+  assert 400 == body['status']
+  assert 400 == result.status_code
+
+def test_fail_correct_parameter_not_exist_2():
+  result = app.test_client().get('/fib?m=1')
+  body = result.get_json()
+  assert 400 == body['status']
+  assert 400 == result.status_code
