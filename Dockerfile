@@ -5,6 +5,8 @@ ENV FLASK_APP=app
 
 COPY ./app /app
 
+RUN apk add --update \
+&& apk add git
 RUN pip install Flask
 RUN pip install gunicorn
 RUN apk add bash curl nodejs
