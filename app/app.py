@@ -8,9 +8,10 @@ app = Flask(__name__)
 
 def return_fib_number_by_json():
   v = Validator(get_schema())
-  if v.validate(get_params()):
-    param = int(request.args.get('n'))
-    fib_number = int(calculate_fib_number(param))
+  params = get_params()
+  if v.validate(params):
+    n = int(params['n'])
+    fib_number = int(calculate_fib_number(n))
     return jsonify({"result": fib_number})
   else:
     return jsonify({
