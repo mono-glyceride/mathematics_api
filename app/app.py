@@ -1,5 +1,4 @@
 from flask import Flask, jsonify
-import sympy as sym
 import os
 from dotenv import load_dotenv
 load_dotenv()

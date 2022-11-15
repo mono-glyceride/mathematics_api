@@ -7,6 +7,7 @@ fib = Blueprint('fib', __name__)
 @fib.route('/fib')
 
 def return_fib_number_by_json():
+  #　複数のパラメータが存在する場合、エラーを返す
   if 1 < len(dict(request.args)):
     message = {
       "params": ['too many parameters, only one parameter can be passed']
