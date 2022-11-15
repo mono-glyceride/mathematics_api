@@ -3,20 +3,35 @@
 ##  仕様
 フィボナッチ数列を返すAPI
 
+### n番目のフィボナッチ数が返ってくる場合
 **リクエスト例**
 ```
 curl -X GET -H "Content-type: application/json" "https://mgd-mathematics-api.herokuapp.com/fib?n=99"
 ```
 **レスポンス例**
-正常に値が返ってきた場合
 ```json
 {
   "result": 218922995834555169026
 }
 ```
 
-エラーの場合
-
+### 不正なパラメータによりエラーが返ってくる場合
+**リクエスト例**
+```
+curl -X GET -H "Content-type: application/json" "https://mgd-mathematics-api.herokuapp.com/fib?n="
+```
+**レスポンス例**
+```json
+{
+  "message": {
+    "n": [
+      "field 'n' cannot be coerced: invalid literal for int() with base 10: ''",
+      "must be of integer type"
+    ]
+  },
+  "status": 400
+}
+```
 
 ## 環境構築
 ```bash
