@@ -1,4 +1,4 @@
-from flask import Blueprint, Flask, jsonify, request
+from flask import Blueprint, jsonify, request
 import sympy as sym
 from cerberus import Validator
 

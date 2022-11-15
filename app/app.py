@@ -1,6 +1,5 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify
 import sympy as sym
-from cerberus import Validator
 import os
 from dotenv import load_dotenv
 load_dotenv()
