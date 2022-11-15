@@ -32,6 +32,25 @@ curl -X GET -H "Content-type: application/json" "https://mgd-mathematics-api.her
   "status": 400
 }
 ```
+### 不正なメソッドによりエラーが返ってくる場合
+**リクエスト例**
+```
+curl -X POST -H "Content-type: application/json" "http://localhost:5000/fib?n=1"
+```
+**レスポンス例**
+```json
+{
+  "message": "The method is not allowed for the requested URL.",
+  "status": 405
+}
+```
+### パラメータについて
+```bash
+n
+```
+正常に処理されるパラメータの条件
+- nに対してのみ値を渡している
+- nに対して1以上の整数を渡している
 
 ## 環境構築
 .envファイルを作成
