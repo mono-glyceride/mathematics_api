@@ -34,6 +34,8 @@ curl -X GET -H "Content-type: application/json" "https://mgd-mathematics-api.her
 ```
 
 ## 環境構築
+.envファイルを作成
+.env.sampleの内容を.envファイルにコピー
 ```bash
 docker-compose up
 ```
