@@ -35,7 +35,7 @@ curl -X GET -H "Content-type: application/json" "https://mgd-mathematics-api.her
 ### 不正なメソッドによりエラーが返ってくる場合
 **リクエスト例**
 ```
-curl -X POST -H "Content-type: application/json" "https://mgd-mathematics-api.herokuapp.com/fib?n="
+curl -X POST -H "Content-type: application/json" "https://mgd-mathematics-api.herokuapp.com/fib?n=1"
 ```
 **レスポンス例**
 ```json
