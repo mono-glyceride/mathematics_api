@@ -46,7 +46,10 @@ docker container exec -it app /bin/sh
 ```
 
 ## テストの実行
-
+```bash
+# Docker内
+ENV=test pytest -v --cov --cov-report=term-missing
+```
 
 ## デプロイ
 ```bash
