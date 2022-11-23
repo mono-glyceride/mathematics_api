@@ -53,8 +53,6 @@ n
 - nに対して1以上の整数を渡している
 
 ## 環境構築
-.envファイルを作成
-.env.sampleの内容を.envファイルにコピー
 ```bash
 docker-compose up
 ```
@@ -68,19 +66,19 @@ docker container exec -it app /bin/sh
 
 ## テストの実行
 ```bash
-# Docker内
-ENV=test pytest -v --cov --cov-report=term-missing
+# Docker内で行うこと
+pytest -v --cov --cov-report=term-missing
 ```
 
 ## ステージング環境へのデプロイ
 ```bash
-# Docker内、mainブランチ
+# mainブランチをデプロイする場合
 git push staging main
 ```
 
 ## デプロイ
 ```bash
-# Docker内、mainブランチ
+# mainブランチをデプロイする場合
 git push heroku main
 ```
 
