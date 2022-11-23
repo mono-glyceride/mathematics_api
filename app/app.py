@@ -1,13 +1,6 @@
 from flask import Flask, jsonify
-import os
-from dotenv import load_dotenv
-load_dotenv()
 
-# 開発環境、テスト、本番環境でfibを読み込むのに必要な記述が異なるため
-if os.environ['ENV'] == 'development':
-  from route.fib import fib
-else:
-  from app.route.fib import fib
+from route.fib import fib
 app = Flask(__name__)
 
 app.register_blueprint(fib)
