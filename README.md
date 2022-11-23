@@ -72,11 +72,20 @@ docker container exec -it app /bin/sh
 ENV=test pytest -v --cov --cov-report=term-missing
 ```
 
+## ステージング環境へのデプロイ
+```bash
+# Docker内、mainブランチ
+git push staging main
+```
+
 ## デプロイ
 ```bash
 # Docker内、mainブランチ
 git push heroku main
 ```
+
+## ステージング環境
+https://mgd-mathematics-api-staging.herokuapp.com
 
 ## 本番環境
 https://mgd-mathematics-api.herokuapp.com
