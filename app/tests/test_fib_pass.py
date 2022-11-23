@@ -1,5 +1,5 @@
 import pytest
-from app.app import app
+from app import app
 
 def test_pass_1():
   result = app.test_client().get('/fib?n=1')
