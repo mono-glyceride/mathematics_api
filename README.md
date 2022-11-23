@@ -74,13 +74,13 @@ ENV=test pytest -v --cov --cov-report=term-missing
 
 ## ステージング環境へのデプロイ
 ```bash
-# Docker内、mainブランチ
+# mainブランチをデプロイする場合
 git push staging main
 ```
 
 ## デプロイ
 ```bash
-# Docker内、mainブランチ
+# mainブランチをデプロイする場合
 git push heroku main
 ```
 
